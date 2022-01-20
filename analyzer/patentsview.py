@@ -1,6 +1,5 @@
 import json, requests
-import pandas as pd
-
+from urllib.error import URLError, HTTPError
 from analyzer.errors import errors
 
 class Request():
@@ -32,8 +31,17 @@ class Request():
                 )
 
                 # making data request to the server
-                r = requests.get(self.__request_url).text
-                json_data = json.loads(r)
+                try:
+                    r = requests.get(self.__request_url).text
+                    json_data = json.loads(r)
+                # checking HTTP errors:
+                except HTTPError as e:
+                    print('HTTP Error code: ', e.code)
+                    raise HTTPError                
+                # checking URL errors
+                except URLError as e:
+                    print('Reason: ', e.reason)
+                    raise URLError
 
                 # checking if there exists data with given requirements
                 try:
@@ -41,7 +49,7 @@ class Request():
                         # there is no data for the query
                         print(('\033[93m'
                                'There is no data for your query'
-                               '\x1b[37m'))
+                               '\033[37m'))
                         self.__data = json_data
                         return
                 except KeyError:
