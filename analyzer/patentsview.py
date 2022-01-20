@@ -58,4 +58,7 @@ Try with one of the following values:
     •  'NBER\033[0;37m'''.format(endpoint))
             return
 
-        return 
+        return
+
+    def get_data(self):
+        return self.__data  
