@@ -69,7 +69,9 @@ class test_get_data(unittest.TestCase):
         pass
 
     def test_corner_input(self):
-        pass
+        # requesting data before generating it
+        self.assertEqual(self.req.get_data(), None)
+        # should raise a warning, implement test for warnings
 
 
 if __name__ == '__main__':
