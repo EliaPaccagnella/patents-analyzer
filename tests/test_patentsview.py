@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from analyzer import patentsview as api
 from analyzer.errors import errors
 
+
 class test_make_request(unittest.TestCase):
 
     def setUp(self):
@@ -225,13 +226,13 @@ class test_make_request(unittest.TestCase):
         # testing invalid query syntax
         with self.assertRaises(errors.SyntaxError):
             self.req.make_request(
-               query=('{"_and:[{"assignee_country":"IT"},' # missing closing "
+               query=('{"_and:[{"assignee_country":"IT"},'  # missing closing "
                       '{"patent_year":2020}]}')
             )
 
         with self.assertRaises(errors.SyntaxError):
             self.req.make_request(
-               query='{"patent_nuber":"7861215"}' # misspelling number
+               query='{"patent_nuber":"7861215"}'          # misspelling number
             )
 
         # testing invalid field syntax
@@ -239,7 +240,7 @@ class test_make_request(unittest.TestCase):
             self.req.make_request(
                query=('{"_and:"[{"assignee_country":"IT"},'
                       '{"patent_year":2020}]}'),
-               fields=["patnt_id"] # misspelling patent
+               fields=["patnt_id"]                         # misspelling patent
             )
         # syntax errors in fields are handled automatically by Python
         with self.assertRaises(SyntaxError):
@@ -270,7 +271,11 @@ class test_make_request(unittest.TestCase):
         # testing request generating no data
         with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
             self.req.make_request(
-                query=('{"_and":[{"inventor_first_name":["Scott"]},{"inventor_last_name":["Davidson"]},{"patent_year":2022}]}'),
+                query=(
+                    '{"_and":[{"inventor_first_name":["Scott"]},'
+                    '{"inventor_last_name":["Davidson"]},'
+                    '{"patent_year":2022}]}'
+                ),
                 fields=["patent_id"]
             )
 
@@ -280,6 +285,7 @@ class test_make_request(unittest.TestCase):
         # testing for a statement beeing printed in the terminal
         # source: https://bit.ly/3mQUwsO
 
+
 class test_get_data(unittest.TestCase):
 
     def setUp(self):
@@ -287,7 +293,7 @@ class test_get_data(unittest.TestCase):
         self.req = api.Request()
         print("\nInitializing test...")
         return
-    
+
     def tearDown(self):
         '''After every test, this method deletes the Request object'''
         del self.req
@@ -313,7 +319,7 @@ class test_get_data(unittest.TestCase):
     def test_corner_input(self):
         '''Testing correct usage of get data in case
         the request previously made returns no data.'''
-        
+
         # testing the case in which the make_request method returns no data
         self.req.make_request(
             query=('{"_and":[{"assignee_country":"IT"},'
