@@ -1,6 +1,8 @@
 import json, requests
 import pandas as pd
 
+from analyzer.errors import errors
+
 class Request():
 
     def __init__(self):
@@ -61,4 +63,6 @@ Try with one of the following values:
         return
 
     def get_data(self):
-        return self.__data  
+        if self.__data is None:
+            raise errors.NoData()
+        return self.__data
