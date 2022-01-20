@@ -1,6 +1,8 @@
-import json, requests
+import json
+import requests
 from urllib.error import URLError, HTTPError
 from analyzer.errors import errors
+
 
 class Request():
 
@@ -19,15 +21,16 @@ class Request():
         • fields <list>: fields to include in the results of the API
 
     OUTPUT:
-        The function doesn't return directly the data. To obtain it, use the 
+        The function doesn't return directly the data. To obtain it, use the
         get_data method after making the request.
         If errors arise during the data request, this function will raise
         instead python errors signaling the issue.
         '''
 
         # defining basic URL syntax
-        self.__request_url = 'https://api.patentsview.org/{endpoint}/query?q={query}&f={fields}'
-        
+        self.__request_url = ('https://api.patentsview.org/{endpoint}/'
+                              'query?q={query}&f={fields}')
+
         # defining validation variables
         valid_endpoints = ['patents',
                            'inventors',
@@ -54,7 +57,7 @@ class Request():
                 # checking HTTP errors:
                 except HTTPError as e:
                     print('HTTP Error code: ', e.code)
-                    raise HTTPError                
+                    raise HTTPError
                 # checking URL errors
                 except URLError as e:
                     print('Reason: ', e.reason)
