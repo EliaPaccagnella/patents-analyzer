@@ -8,7 +8,7 @@ class Request():
     def __init__(self):
         self.__data = None
 
-    def make_request(self, endpoint='patents', query='', fields=None, verbose=0):
+    def make_request(self, endpoint='patents', query='', fields=None):
         # defining basic URL syntax
         self.__request_url = 'https://api.patentsview.org/{endpoint}/query?q={query}&f={fields}'
         
