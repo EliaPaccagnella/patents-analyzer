@@ -249,7 +249,18 @@ class test_make_request(unittest.TestCase):
         # source: https://bit.ly/3JwcDOp
 
     def test_corner_input(self):
-        pass
+        # testing request generating no data
+        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
+            self.req.make_request(
+                query=('{"_and":[{"inventor_first_name":["Scott"]},{"inventor_last_name":["Davidson"]},{"patent_year":2022}]}'),
+                fields=["patent_id"]
+            )
+
+        warning = '\033[93mThere is no data for your query\x1b[37m\n'
+        assert fake_stdout.getvalue() == warning
+
+        # testing for a statement beeing printed in the terminal
+        # source: https://bit.ly/3mQUwsO
 
 class test_get_data(unittest.TestCase):
 
