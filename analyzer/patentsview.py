@@ -12,12 +12,12 @@ class Request():
     def make_request(self, endpoint='patents', query='', fields=None, verbose=0):
         # defining validation variables
         valid_endpoints = ['patents',
-                          'inventors',
-                          'assignees',
-                          'location',
-                          'CPC',
-                          'USPC',
-                          'NBER']
+                           'inventors',
+                           'assignees',
+                           'locations',
+                           'cpc_subsections',
+                           'uspc_mainclasses',
+                           'nber_subcategories']
 
         # checking endpoint validity
         if endpoint in valid_endpoints:
