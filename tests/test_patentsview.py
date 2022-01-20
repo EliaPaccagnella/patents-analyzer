@@ -49,8 +49,21 @@ class test_make_request(unittest.TestCase):
 
 class test_get_data(unittest.TestCase):
 
+    def setUp(self):
+        self.req = api.Request()
+        print("Initializing test...")
+        return
+    
+    def tearDown(self):
+        del self.req
+        print("Tests run")
+        return
+
     def test_valid_input(self):
-        pass
+        self.req.make_request(
+            query='{"patent_number":"7861215"}'
+        )
+        self.assertEqual(self.req.get_data(), self.req._Request__data)
 
     def test_wrong_input(self):
         pass
