@@ -44,3 +44,19 @@ class InvalidEndpoint(Exception):
                          '    • "nber_subcategories"'
                          ).format(code=self.code, end=self.endpoint)
         return error_message
+
+
+class NoData(Warning):
+
+    def __init__(self):
+        super().__init__()
+        self.code = '104'
+
+    def __str__(self):
+        warning_message = ('\033[93m\n'
+                           'Warning {}:\n'
+                           '  This Request() object does not currently contain'
+                           ' any data.\033[37m\n'
+                           '  Try to use the .make_request method with a valid'
+                           ' query before to call .get_data').format(self.code)
+        return warning_message
