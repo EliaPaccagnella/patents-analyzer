@@ -6,10 +6,12 @@ from analyzer.errors import errors
 class Request():
 
     def __init__(self):
-        self.__request_url = 'https://api.patentsview.org/%s/query?'
         self.__data = None
 
     def make_request(self, endpoint='patents', query='', fields=None, verbose=0):
+        # defining basic URL syntax
+        self.__request_url = 'https://api.patentsview.org/{endpoint}/query?q={query}&f={fields}'
+        
         # defining validation variables
         valid_endpoints = ['patents',
                           'inventors',
