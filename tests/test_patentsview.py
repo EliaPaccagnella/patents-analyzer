@@ -4,6 +4,7 @@ import sys
 import os
 from unittest.mock import patch
 import io
+# importing modules from analyzer
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from analyzer import patentsview as api
 from analyzer.errors import errors
@@ -11,16 +12,27 @@ from analyzer.errors import errors
 class test_make_request(unittest.TestCase):
 
     def setUp(self):
+        '''Before every test this method creates a new Request object'''
         self.req = api.Request()
         print("\nInitializing test...")
         return
 
     def tearDown(self):
+        '''After every test, this method deletes the Request object'''
         del self.req
         print("Tests result:")
         return
 
     def test_valid_input(self):
+        '''Testing valid inputs for make_request. Tests made are:
+        • default endpoint + default fields
+        • default endpoint (= patents)
+        • patents endpoint
+        • inventors endpoint
+        • assignees endpoint
+        • locations endpoint
+        '''
+
         # testing input with only query specified
         self.req.make_request(query='{"patent_number":"7861215"}')
         result = ('{"patents":[{"patent_id":"7861215",'
@@ -202,6 +214,13 @@ class test_make_request(unittest.TestCase):
         self.assertEqual(self.req._Request__data, json.loads(result))
 
     def test_wrong_input(self):
+        '''Testing invalid inputs for make_request. Tests made are:
+        • wrong query syntax (misspelling and syntax structure errors)
+        • wrong fields syntax (misspelling errors)
+        • wrong fields syntax (syntax structure errors)
+        • no query is specified
+        • invalid endpoint
+        '''
 
         # testing invalid query syntax
         with self.assertRaises(errors.SyntaxError):
@@ -244,6 +263,10 @@ class test_make_request(unittest.TestCase):
         # source: https://bit.ly/3JwcDOp
 
     def test_corner_input(self):
+        '''Testing corner-case inputs for make_request. Tests made are:
+        • request is valid but generates no data
+        '''
+
         # testing request generating no data
         with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
             self.req.make_request(
@@ -260,27 +283,37 @@ class test_make_request(unittest.TestCase):
 class test_get_data(unittest.TestCase):
 
     def setUp(self):
+        '''Before every test, this method creates a new Request object'''
         self.req = api.Request()
         print("\nInitializing test...")
         return
     
     def tearDown(self):
+        '''After every test, this method deletes the Request object'''
         del self.req
         print("Tests result")
         return
 
     def test_valid_input(self):
+        '''Testing right usage of get_data.'''
+
+        # testing correct functioning
         self.req.make_request(
             query='{"patent_number":"7861215"}'
         )
         self.assertEqual(self.req.get_data(), self.req._Request__data)
 
     def test_wrong_input(self):
+        '''Testing get data call before to make a data request.'''
+
         # testing data request before using the make_request method
         with self.assertRaises(errors.NoData):
             self.req.get_data()
 
     def test_corner_input(self):
+        '''Testing correct usage of get data in case
+        the request previously made returns no data.'''
+        
         # testing the case in which the make_request method returns no data
         self.req.make_request(
             query=('{"_and":[{"assignee_country":"IT"},'
