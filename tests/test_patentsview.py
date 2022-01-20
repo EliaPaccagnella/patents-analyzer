@@ -89,12 +89,18 @@ class test_get_data(unittest.TestCase):
         self.assertEqual(self.req.get_data(), self.req._Request__data)
 
     def test_wrong_input(self):
-        pass
+        # testing data request before using the make_request method
+        with self.assertRaises(errors.NoData):
+            self.req.get_data()
 
     def test_corner_input(self):
-        # requesting data before generating it
-        self.assertEqual(self.req.get_data(), None)
-        # should raise a warning, implement test for warnings
+        # testing the case in which the make_request method returns no data
+        self.req.make_request(
+            query=('{"_and":[{"assignee_country":"IT"},'
+                   '{"patent_year":2022}]}'),
+            fields=["patent_id"]
+        )
+        self.assertEqual(self.req.get_data(), self.req._Request__data)
 
 
 if __name__ == '__main__':
