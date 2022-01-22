@@ -17,19 +17,47 @@ def patents_country_years(country, start, end):
                     + str(year)\
                     + '}]}'
             req.make_request('patents', query)
-            contents = req.get_data()["total_patent_count"]
+            contents = req.get_data()['total_patent_count']
             if contents != 0:
                 data[str(year)] = contents
 
             # if the country is wrong:
             else:
-                response = "\033[93mSadly, we don't have data for country {c}.\033[37m".format(c=country)
+                response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=country)
+                print(response)
                 return response                  
         return data
 
     # if start and end are out of available range
     else:
         response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        print(response)
         return response
 
 #print(patents_country_years('UP', 1976, 1978))
+
+def get_graph(dictionary, country, start, end):
+
+    plt.bar(*zip(*dictionary.items()), color="lightpink")
+    plt.ylabel('N. of new patents')
+    plt.xlabel('Years')
+    plt.title('Growth of patents in {c} from {s} to {e}'
+              .format(c=country, s=start, e=end))
+    # to get labels on the bars
+    k = list(dictionary.keys())
+    v = list(dictionary.values())
+    for i in range(len(v)):
+        plt.annotate(v[i], xy=(k[i], v[i]), ha='center', va='bottom')
+    plt.show()
+
+
+def growth(country, start, end):
+
+    data = patents_country_years(country, start, end)
+    if type(data) is dict:
+        get_graph(data, country, start, end)
+
+    return
+
+growth('IT', 1966, 1977)
+    
