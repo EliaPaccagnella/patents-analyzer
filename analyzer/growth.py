@@ -2,10 +2,33 @@ import sys
 import os
 import matplotlib.pyplot as plt
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from patentsview import Request
+from analyzer.patentsview import Request
+
+"""
+you are interested in the growth of patents creation
+of a specific country
+in a specific period (years)
+"""
 
 
 def patents_country_years(country, start, end):
+
+    """
+    Given a country and a period of time, return a dictionary where:
+    keys = year
+    values = number of patents registered during the year
+
+    Parameters:
+    ----------
+    country = a country in ISO 3166-1 alpha-2 (e.g. "US")
+    start = the starting year of the period you are interested in (e.g. 1999)
+            min value = 1976
+            max value = 2021
+    end = the ending year of the period you are interested in (e.g. 2007)
+          min value = 1976
+          max value = 2021
+    """
+
     data = {}
     if start > 1975 and end < 2022:
         if start > end:
@@ -60,3 +83,5 @@ def growth(country, start, end):
         get_graph(data, country, start, end)
 
     return
+
+patents_country_years('', 1999,2002)
