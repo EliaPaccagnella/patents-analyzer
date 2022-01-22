@@ -3,6 +3,8 @@ import os
 import sys
 import io
 from unittest.mock import patch
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from analyzer.growth import patents_country_years
 
 class Test_patents_country_years(unittest.TestCase):
 
