@@ -112,5 +112,3 @@ def growth(country, start, end):
         get_graph(data, country, start, end)
 
     return
-
-patents_country_years('', 1999,2002)
