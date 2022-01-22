@@ -30,27 +30,25 @@ class Test_patents_country_years(unittest.TestCase):
         test_start = 1980
         test_end = 1985 
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=test_country)
-        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
-            patents_country_years(test_country, test_start, test_end)
-        assert fake_stdout.getvalue() == response
+        self.assertEqual(
+            patents_country_years(test_country, test_start, test_end),
+            response)
 
         #wrong years
         test_country = "CH"
         test_start = 1570
         test_end = 1577 
         response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
-        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
-            patents_country_years(test_country, test_start, test_end)
-        assert fake_stdout.getvalue() == response
+        self.assertEqual(
+            patents_country_years(test_country, test_start, test_end),
+            response)
 
     def test_empty_string (self):
         test_country = ""
         test_start = 1977
         test_end = 1978
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=test_country)
-        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
-            patents_country_years(test_country, test_start, test_end)
-        assert fake_stdout.getvalue() == response
+        self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
         
 
 if __name__=='__main__':
