@@ -25,18 +25,20 @@ class Test_patents_country_years(unittest.TestCase):
         self.assertEqual(patents_country_years("JP", 1977, 1978),{'1977': 5839, '1978': 6558})
 
     def test_wrong_inputs(self):
+        #wrong country
         test_country = "UP"
         test_start = 1980
         test_end = 1985 
-        response = "Sadly, we don't have data for {c} from {s} to {e}.\n".format(c=test_country, s=test_start, e=test_end)
+        response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=test_country)
         with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
             patents_country_years(test_country, test_start, test_end)
         assert fake_stdout.getvalue() == response
 
+        #wrong years
         test_country = "CH"
         test_start = 1570
         test_end = 1577 
-        response = "Sadly, we don't have data for {c} from {s} to {e}.\n".format(c=test_country, s=test_start, e=test_end)
+        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
         with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
             patents_country_years(test_country, test_start, test_end)
         assert fake_stdout.getvalue() == response
