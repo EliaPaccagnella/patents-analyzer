@@ -47,18 +47,11 @@ class Test_patents_country_years(unittest.TestCase):
         test_country = ""
         test_start = 1977
         test_end = 1978
-        response = "Sadly, we don't have data for {c} from {s} to {e}.\n".format(c=test_country, s=test_start, e=test_end)
+        response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=test_country)
         with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
             patents_country_years(test_country, test_start, test_end)
         assert fake_stdout.getvalue() == response
         
-        test_country = "CH"
-        test_start = ""
-        test_end = ""
-        response = "Sadly, we don't have data for {c} from {s} to {e}.\n".format(c=test_country, s=test_start, e=test_end)
-        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
-            patents_country_years(test_country, test_start, test_end)
-        assert fake_stdout.getvalue() == response
 
 if __name__=='__main__':
     unittest.main(verbosity=0)
