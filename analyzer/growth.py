@@ -63,6 +63,21 @@ def patents_country_years(country, start, end):
 
 def get_graph(dictionary, country, start, end):
 
+    """
+    Given a dictionary, return a barplot of the above data
+
+    Parameters:
+    ----------
+    dictionary = output gained from the above function which type is dict
+    country = a country in ISO 3166-1 alpha-2 (e.g. "US")
+    start = the starting year of the period you are interested in (e.g. 1999)
+            min value = 1976
+            max value = 2021
+    end = the ending year of the period you are interested in (e.g. 2007)
+          min value = 1976
+          max value = 2021
+    """
+
     plt.bar(*zip(*dictionary.items()), color="lightpink")
     plt.ylabel('N. of new patents')
     plt.xlabel('Years')
@@ -77,6 +92,20 @@ def get_graph(dictionary, country, start, end):
 
 
 def growth(country, start, end):
+
+    """
+    Include the above 2 functions to have a better output
+
+    Parameters:
+    ----------
+    country = a country in ISO 3166-1 alpha-2 (e.g. "US")
+    start = the starting year of the period you are interested in (e.g. 1999)
+            min value = 1976
+            max value = 2021
+    end = the ending year of the period you are interested in (e.g. 2007)
+          min value = 1976
+          max value = 2021
+    """
 
     data = patents_country_years(country, start, end)
     if type(data) is dict:
