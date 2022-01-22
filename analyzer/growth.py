@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from patentsview import Request
 
+
 def patents_country_years(country, start, end):
     data = {}
     if start > 1975 and end < 2022:
         if start > end:
-            start,end = end, start
+            start, end = end, start
         for year in range(start, end+1):
             req = Request()
             query = '{"_and":[{"assignee_country": "'\
@@ -23,18 +24,19 @@ def patents_country_years(country, start, end):
 
             # if the country is wrong:
             else:
-                response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=country)
+                response = ('\033[93mSadly, there is no data for country {c}.'
+                            '\033[37m').format(c=country)
                 print(response)
-                return response                  
+                return response
         return data
 
     # if start and end are out of available range
     else:
-        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        response = ('\033[93mPlease make sure: '
+                    'starting year > 1975 and ending year < 2022.\033[37m')
         print(response)
         return response
 
-#print(patents_country_years('UP', 1976, 1978))
 
 def get_graph(dictionary, country, start, end):
 
@@ -58,6 +60,3 @@ def growth(country, start, end):
         get_graph(data, country, start, end)
 
     return
-
-growth('IT', 1966, 1977)
-    
