@@ -1,11 +1,12 @@
 import unittest
 import os
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(_file_))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from analyzer.country_feature import world_map
 
+
 class TestWorldMap(unittest.TestCase):
- def test_valid_input(self):
+    def test_valid_input(self):
         # valid continents
         valid_continents = [
             'world',
@@ -36,5 +37,5 @@ class TestWorldMap(unittest.TestCase):
         self.assertEqual(world_map('oceania'),0)
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     unittest.main()
