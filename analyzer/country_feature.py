@@ -74,34 +74,41 @@ def world_map():
     """
     # defining continents
     continents = {
-    'world': ['*'],
-    'north america': [
-        'AG', 'BB', 'BS', 'BZ', 'CA', 'CR', 'CU', 'DM', 'DO', 'GT', 'GT',
-        'HN', 'JM', 'MX', 'NI', 'PA', 'TT', 'US', 'SV', 'GD', 'KN', 'LC', 'VC'
-        ],
-    'africa': [
-        'AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CG', 'CI', 'CM', 'CV', 'DJ',
-        'EG', 'ER', 'ET', 'GA', 'GH', 'GM', 'GN', 'GW', 'KE', 'LR', 'LS',
-        'LY', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
-        'SC', 'SD', 'SL', 'SN', 'SO', 'ST', 'TG', 'TN', 'TZ', 'UG', 'ZM',
-        'ZW', 'DZ', 'CF', 'TD', 'KM', 'GQ', 'MA', 'ZA', 'SZ'
-        ],
-    'south america': [
-        'AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'GY', 'PE', 'PY', 'SR', 'UY', 'VE'
-        ],
-    'asia': [
-        'AF', 'AM', 'AZ', 'BD', 'BH', 'BN', 'BT', 'CN','CY', 'GE', 'ID', 'IL',
-        'IN', 'IQ', 'IR', 'JO', 'JP', 'KG', 'KP', 'KR', 'KW', 'LB', 'MM', 'MN',
-        'MV', 'MY', 'NP', 'OM', 'PH', 'PK', 'QA', 'SA', 'SG', 'SY', 'TH', 'TJ',
-        'TM', 'TR', 'UZ', 'VN', 'YE', 'KH', 'TL', 'KZ', 'LA', 'LK', 'AE'
-        ],
-    'europe': [
-        'AD', 'AL', 'AT', 'BE', 'BG', 'BY', 'CZ', 'DE', 'DK', 'EE', 'FI', 'FR',
-        'GR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU', 'LV', 'MK', 'MT', 'NL',
-        'NO', 'PL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SK', 'SM', 'UA', 'VA', 'BA',
-        'HR', 'MD', 'MC', 'ME', 'RS', 'ES', 'CH', 'GB'
-        ]
-    }
+        'world': ['*'],
+        'north america': [
+            'AG', 'BB', 'BS', 'BZ', 'CA', 'CR', 'CU', 'DM', 'DO', 'GT', 'GT',
+            'HN', 'JM', 'MX', 'NI', 'PA', 'TT', 'US', 'SV', 'GD', 'KN',
+            'LC', 'VC'
+            ],
+        'africa': [
+            'AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CG', 'CI', 'CM', 'CV', 'DJ',
+            'EG', 'ER', 'ET', 'GA', 'GH', 'GM', 'GN', 'GW', 'KE', 'LR', 'LS',
+            'LY', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
+            'SC', 'SD', 'SL', 'SN', 'SO', 'ST', 'TG', 'TN', 'TZ', 'UG', 'ZM',
+            'ZW', 'DZ', 'CF', 'TD', 'KM', 'GQ', 'MA', 'ZA', 'SZ'
+            ],
+        'south america': [
+            'AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'GY', 'PE', 'PY', 'SR',
+            'UY', 'VE'
+            ],
+        'asia': [
+            'AF', 'AM', 'AZ', 'BD', 'BH', 'BN', 'BT', 'CN', 'CY', 'GE',
+            'ID', 'IL', 'IN', 'IQ', 'IR', 'JO', 'JP', 'KG', 'KP', 'KR',
+            'KW', 'LB', 'MM', 'MN', 'MV', 'MY', 'NP', 'OM', 'PH', 'PK',
+            'QA', 'SA', 'SG',  'SY', 'TH', 'TJ',  'TM', 'TR', 'UZ', 'VN',
+            'YE', 'KH', 'TL', 'KZ', 'LA', 'LK', 'AE'
+            ],
+        'europe': [
+            'AD', 'AL', 'AT', 'BE', 'BG', 'BY',
+            'CZ', 'DE', 'DK', 'EE', 'FI', 'FR',
+            'GR', 'HU', 'IE', 'IS', 'IT', 'LI',
+            'LT', 'LU', 'LV', 'MK', 'MT', 'NL',
+            'NO', 'PL', 'PT', 'RO', 'RU', 'SE',
+            'SI', 'SK', 'SM', 'UA', 'VA', 'BA',
+            'HR', 'MD', 'MC', 'ME', 'RS', 'ES',
+            'CH', 'GB'
+            ]
+        }
 
     continent = continent.lower()
 
@@ -115,10 +122,11 @@ def world_map():
 
     # using previous print_patents function to retrieve number of patents
     for state in country_codes:
-            if state in continents[continent] or continent=='world':
+            if state in continents[continent] or continent == 'world':
                 # adding country code to the data dictionary
-                data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
-                # using previous print_patents function to retrieve number of patents
+                data['code'] +=
+                [pycountry.countries.get(alpha_2=state).alpha_3]
+                # using print_patents function to retrieve number of patents
                 data['number of patents'] += [print_patents(state, "n")]
 
     df = pd.DataFrame(data)
@@ -137,11 +145,11 @@ def world_map():
 
     fig.update_layout(
         title_text='Number of patents by state',
-         geo_scope=continent, #sets the map to show th continent specified
+        geo_scope=continent,  # sets the map to show th continent specified
     )
 
     fig.show()
-        return 1
+    return 1
     else:
         print(('{continent} is not a valid continent. Choose among:\n'
                '\t- europe\n'
@@ -151,3 +159,4 @@ def world_map():
                '\t- africa\n'
                '\t- world\n').format(continent=continent))
         return 0
+
