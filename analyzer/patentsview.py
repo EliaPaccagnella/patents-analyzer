@@ -9,7 +9,9 @@ class Request():
     def __init__(self):
         self.__data = None
 
-    def make_request(self, endpoint='patents', query=None, fields=''):
+    def make_request(self, endpoint='patents',
+                     query=None, fields='', verbose=True):
+
         '''Request data from the PatentsView API
 
     INPUT:
@@ -56,11 +58,13 @@ class Request():
                     json_data = json.loads(r)
                 # checking HTTP errors:
                 except HTTPError as e:
-                    print('HTTP Error code: ', e.code)
+                    if verbose:
+                        print('HTTP Error code: ', e.code)
                     raise HTTPError
                 # checking URL errors
                 except URLError as e:
-                    print('Reason: ', e.reason)
+                    if verbose:
+                        print('Reason: ', e.reason)
                     raise URLError
 
                 # checking if there exists data with given requirements
@@ -68,9 +72,10 @@ class Request():
                     if json_data['count'] == 0:
                         # there is no data for the query
                         # printing a small warning
-                        print(('\033[93m'
-                               'There is no data for your query'
-                               '\033[37m'))
+                        if verbose:
+                            print(('\033[93m'
+                                   'There is no data for your query'
+                                   '\033[37m'))
                         self.__data = json_data
                         return
                 except KeyError:
