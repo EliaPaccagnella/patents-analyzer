@@ -4,7 +4,6 @@ import json
 import sys
 
 
-
 def print_patents(name, surname, val, contents):
     """
     Print the patents' count or a list patents' names.
@@ -43,17 +42,17 @@ def print_patents(name, surname, val, contents):
 
 
 def obtain_patents(name, surname):
-"""
-Return the list and the count of patents'
-getted using the API of "patentsview.org".
-The name and surname of the author will be sent to "api.patentsview.org",
-the result will be readed and loaded in JSON format.
+    """
+    Return the list and the count of patents'
+    getted using the API of "patentsview.org".
+    The name and surname of the author will be sent to "api.patentsview.org",
+    the result will be readed and loaded in JSON format.
 
-Parameters
-----------
-name     : the name of the author
-surname  : the surname of the author
-"""
+    Parameters
+    ----------
+    name     : the name of the author
+    surname  : the surname of the author
+    """
 
     req = api.Request()
     req.make_request(
