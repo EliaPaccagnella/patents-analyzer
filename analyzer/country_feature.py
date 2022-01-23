@@ -72,17 +72,50 @@ def world_map():
     amount of patents.
 
     """
-    # creating a list of countries based on alpha_2 code for compatibility
-    country_codes = []
-    for country in list(pycountry.countries):
-        country_codes += [country.alpha_2]
+    # defining continents
+    continents = {
+    'world': ['*'],
+    'north america': [
+        'AG', 'BB', 'BS', 'BZ', 'CA', 'CR', 'CU', 'DM', 'DO', 'GT', 'GT',
+        'HN', 'JM', 'MX', 'NI', 'PA', 'TT', 'US', 'SV', 'GD', 'KN', 'LC', 'VC'
+        ],
+    'africa': [
+        'AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CG', 'CI', 'CM', 'CV', 'DJ',
+        'EG', 'ER', 'ET', 'GA', 'GH', 'GM', 'GN', 'GW', 'KE', 'LR', 'LS',
+        'LY', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
+        'SC', 'SD', 'SL', 'SN', 'SO', 'ST', 'TG', 'TN', 'TZ', 'UG', 'ZM',
+        'ZW', 'DZ', 'CF', 'TD', 'KM', 'GQ', 'MA', 'ZA', 'SZ'
+        ],
+    'south america': [
+        'AR', 'BO', 'BR', 'CL', 'CO', 'EC', 'GY', 'PE', 'PY', 'SR', 'UY', 'VE'
+        ],
+    'asia': [
+        'AF', 'AM', 'AZ', 'BD', 'BH', 'BN', 'BT', 'CN','CY', 'GE', 'ID', 'IL',
+        'IN', 'IQ', 'IR', 'JO', 'JP', 'KG', 'KP', 'KR', 'KW', 'LB', 'MM', 'MN',
+        'MV', 'MY', 'NP', 'OM', 'PH', 'PK', 'QA', 'SA', 'SG', 'SY', 'TH', 'TJ',
+        'TM', 'TR', 'UZ', 'VN', 'YE', 'KH', 'TL', 'KZ', 'LA', 'LK', 'AE'
+        ],
+    'europe': [
+        'AD', 'AL', 'AT', 'BE', 'BG', 'BY', 'CZ', 'DE', 'DK', 'EE', 'FI', 'FR',
+        'GR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU', 'LV', 'MK', 'MT', 'NL',
+        'NO', 'PL', 'PT', 'RO', 'RU', 'SE', 'SI', 'SK', 'SM', 'UA', 'VA', 'BA',
+        'HR', 'MD', 'MC', 'ME', 'RS', 'ES', 'CH', 'GB'
+        ]
+    }
 
-    data = {"code": [], "number of patents": []}
+    continent = continent.lower()
+
+    if continent in continents.keys():
+        # creating a list of countries based on alpha_2 code for compatibility
+        country_codes = []
+        for country in list(pycountry.countries):
+            country_codes += [country.alpha_2]
+
+        data = {"code": [], "number of patents": []}
 
     # using previous print_patents function to retrieve number of patents
     for state in country_codes:
-        data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
-        data['number of patents'] += [print_patents(state, "n")]
+
 
     df = pd.DataFrame(data)
     df.to_csv("patents/data.csv")
