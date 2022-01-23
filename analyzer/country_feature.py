@@ -82,8 +82,10 @@ def world_map():
     
     df = pd.DataFrame(data)
     df.to_csv("patents/data.csv")
+
+    # df = pd.read_csv('patents/data.csv')
     
-    #uaing plotly documentation to create a cloropeth map  https://plotly.com/python/choropleth-maps/
+    #using plotly documentation to create a cloropeth map  https://plotly.com/python/choropleth-maps/
     fig = go.Figure(data=go.Choropleth(
         locations=df['code'], # Spatial coordinates
         z = df['number of patents'].astype(float), # Data to be color-coded
@@ -91,5 +93,10 @@ def world_map():
         colorscale = 'Reds',
         colorbar_title = "Number of patents",
     ))
+
+    fig.update_layout(
+        title_text = 'Number of patents by state',
+        geo_scope='world', #map scope selection
+    )
 
     fig.show()
