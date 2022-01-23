@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import patentsview as api
+import analyzer.patentsview as api
 
 
 def print_patents(name, surname, output):
