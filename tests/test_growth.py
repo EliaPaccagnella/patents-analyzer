@@ -24,14 +24,6 @@ class Test_patents_country_years(unittest.TestCase):
     def __init__(self, methodName):
         super().__init__(methodName=methodName)
 
-    def setUp(self):
-        print('\nStarting test...')
-        return
-
-    def tearDown(self):
-        print('Test completed')
-        return
-
     def test_valid_input(self):
 
         '''
