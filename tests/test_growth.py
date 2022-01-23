@@ -50,7 +50,8 @@ class Test_patents_country_years(unittest.TestCase):
         This tests wrong inputs. 
         CASE 1: the country does not exist
         CASE 2: the country is not in api
-        CASE 3: the years inserted are out of range
+        CASE 3: the country acronym is not in ISO 3166-1 alpha-2
+        CASE 4: the years inserted are out of range
         '''
 
         # CASE 1
@@ -72,6 +73,15 @@ class Test_patents_country_years(unittest.TestCase):
             response)
 
         # CASE 3
+        test_country = 'USA'
+        test_start = 2009
+        test_end = 2012 
+        response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=test_country)
+        self.assertEqual(
+            patents_country_years(test_country, test_start, test_end),
+            response)
+
+        # CASE 4
         test_country = 'CH'
         test_start = 1570
         test_end = 1577 
