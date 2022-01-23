@@ -31,8 +31,9 @@ class TestWorldMap(unittest.TestCase):
         # continet inputed is not a valid continent
         self.assertEqual(world_map('Mars',0))
     
-
-
+    def test_corner_input(self):
+        # oceania is not a valid continent for plotly
+        self.assertEqual(world_map('oceania'),0)
 
 
 if _name_ == '_main_':
