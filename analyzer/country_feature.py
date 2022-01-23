@@ -137,7 +137,7 @@ def world_map():
 
     fig.update_layout(
         title_text='Number of patents by state',
-        geo_scope='world',  # map scope selection
+         geo_scope=continent, #sets the map to show th continent specified
     )
 
     fig.show()
