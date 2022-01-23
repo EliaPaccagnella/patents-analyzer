@@ -42,15 +42,15 @@ def print_patents(st, val):
                         return contents['total_patent_count']
             case 'p':
                 if contents['patents'] is not None:
-                    list = []
+                    lst = []
                     for patent in contents['patents']:
                         patent_name = patent['patent_title']
-                        list.append(patent_name)
-                    list = sorted(list(dict.fromkeys(list)))
+                        lst.append(patent_name)
+                    lst = sorted(list(dict.fromkeys(lst)))
                     print('\nThe patents of ' +
                           pycountry.countries.get(alpha_2=str(st)).name +
                           ' are:\n')
-                    for p in list:
+                    for p in lst:
                         print(p)
                     return 1
             case _:
