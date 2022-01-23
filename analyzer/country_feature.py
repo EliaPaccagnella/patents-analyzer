@@ -2,7 +2,11 @@ from types import NoneType
 import pycountry
 import plotly.graph_objects as go
 import pandas as pd
-from patentsview import api
+import sys
+import os
+# importing modules from analyzer
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import patentsview as api
 
 
 def print_patents(st, val):
@@ -22,7 +26,6 @@ def print_patents(st, val):
     req = api.Request()
     req.make_request(query='{"assignee_country":["' + st + '"]}')
     contents = req.get_data()
-    # contents = get_patents(st)
     if type(contents) != NoneType:
         match val:
             case 'n':
@@ -39,15 +42,15 @@ def print_patents(st, val):
                         return contents['total_patent_count']
             case 'p':
                 if contents['patents'] is not None:
-                    lista = []
+                    list = []
                     for patent in contents['patents']:
                         patent_name = patent['patent_title']
-                        lista.append(patent_name)
-                    lista = sorted(list(dict.fromkeys(lista)))
+                        list.append(patent_name)
+                    list = sorted(list(dict.fromkeys(list)))
                     print('\nThe patents of ' +
                           pycountry.countries.get(alpha_2=str(st)).name +
                           ' are:\n')
-                    for p in lista:
+                    for p in list:
                         print(p)
                     return 1
             case _:
