@@ -50,6 +50,20 @@ class Test_patents_country_years(unittest.TestCase):
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'.format(c=test_country)
         self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
         
+    def corner_case (self):
+        #when test_start is out of range
+        test_country = "DE"
+        test_start = 1700
+        test_end = 1980
+        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
 
+        #when test_end is out of range
+        test_country = "DE"
+        test_start = 2020
+        test_end = 2024
+        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
+    
 if __name__=='__main__':
     unittest.main(verbosity=0)
