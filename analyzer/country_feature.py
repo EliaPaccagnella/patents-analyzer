@@ -72,3 +72,13 @@ def world_map():
         country_codes = []
     for country in list(pycountry.countries):
         country_codes += [country.alpha_2]
+            
+    data = {"code":[], "number of patents":[]}
+
+    #using previous print_patents function to retrieve number of patents
+    for state in country_codes:
+        data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
+        data['number of patents'] += [print_patents(state, "n", "10000")]
+    
+    df = pd.DataFrame(data)
+    df.to_csv("patents/data.csv")
