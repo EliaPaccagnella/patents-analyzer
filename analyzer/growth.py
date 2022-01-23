@@ -61,7 +61,7 @@ def patents_country_years(country, start, end):
     # if start and end are out of available range
     else:
         response = ('\033[93mPlease make sure: '
-                    'starting year > 1975 and ending year < 2022.\033[37m')
+                    'the time range is within 1976-2021 (included).\033[37m')
         print(response)
         return response
 

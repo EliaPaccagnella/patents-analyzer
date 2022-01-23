@@ -85,7 +85,7 @@ class Test_patents_country_years(unittest.TestCase):
         test_country = 'CH'
         test_start = 1570
         test_end = 1577 
-        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        response = '\033[93mPlease make sure: the time range is within 1976-2021 (included).\033[37m'
         self.assertEqual(
             patents_country_years(test_country, test_start, test_end),
             response)
@@ -115,21 +115,21 @@ class Test_patents_country_years(unittest.TestCase):
         test_country = 'DE'
         test_start = 1700
         test_end = 1980
-        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        response = '\033[93mPlease make sure: the time range is within 1976-2021 (included).\033[37m'
         self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
 
         # CASE 2
         test_country = 'DE'
         test_start = 2020
         test_end = 2024
-        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        response = '\033[93mPlease make sure: the time range is within 1976-2021 (included).\033[37m'
         self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
 
         # CASE 3
         test_country = 'DE'
         test_start = 2025
         test_end = 1970
-        response = '\033[93mPlease make sure: starting year > 1975 and ending year < 2022.\033[37m'
+        response = '\033[93mPlease make sure: the time range is within 1976-2021 (included).\033[37m'
         self.assertEqual(patents_country_years(test_country, test_start, test_end), response)
     
 if __name__=='__main__':
