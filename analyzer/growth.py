@@ -54,7 +54,8 @@ def patents_country_years(country, start, end, verbose=True):
             else:
                 response = ('\033[93mSadly, there is no data for country {c}.'
                             '\033[37m').format(c=country)
-                if verbose: print(response)
+                if verbose:
+                    print(response)
                 return response
         return data
 
@@ -62,7 +63,8 @@ def patents_country_years(country, start, end, verbose=True):
     else:
         response = ('\033[93mPlease make sure: '
                     'the time range is within 1976-2021 (included).\033[37m')
-        if verbose: print(response)
+        if verbose:
+            print(response)
         return response
 
 
