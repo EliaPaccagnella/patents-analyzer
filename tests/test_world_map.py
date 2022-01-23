@@ -26,6 +26,11 @@ class TestWorldMap(unittest.TestCase):
         # input must be valid also if continets are capitalized
         for continent in valid_continents:
             self.assertEqual(world_map(continent.capitalize()),1)
+    
+    def test_invalid_input(self):
+        # continet inputed is not a valid continent
+        self.assertEqual(world_map('Mars',0))
+    
 
 
 
