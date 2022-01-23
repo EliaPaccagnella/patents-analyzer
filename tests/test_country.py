@@ -55,7 +55,7 @@ class TestMakeRequestCountry(unittest.TestCase):
         '''Testing wrong-case inputs for make_request'''
 
         # testing wrong val input
-        self.assertEqual(print_patents('IT','l'),0)
+        self.assertEqual(print_patents('IT', 'l'), 0)
 
     def test_corner_input(self):
         '''Testing corner-case inputs for make_request'''
