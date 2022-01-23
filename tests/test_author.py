@@ -12,16 +12,22 @@ from patent import api
 class TestMakeRequestAuthor(unittest.TestCase):
 
     def setUp(self):
+        '''Before every test this method creates a new Request object'''
         self.req = api.Request()
         print("\nInitializing test varibles...")
         return
 
     def tearDown(self):
+        '''After every test, this method deletes the Request object'''
         del self.req
         print("Tests run, all variables have been deleted.")
         return
 
     def test_valid_input(self):
+        '''Testing valid inputs for make_request'''
+
+        # testing patents endpoint
+        # ---> making api request
         self.req.make_request(
             endpoint='patents',
             query='{"_and":['
@@ -30,7 +36,6 @@ class TestMakeRequestAuthor(unittest.TestCase):
                   ']}',
             fields=["patent_id"]
         )
-
         # ---> checking the results
         result = ('{"patents":['
                   '{"patent_id":"4586708"},'
@@ -54,6 +59,9 @@ class TestMakeRequestAuthor(unittest.TestCase):
         self.assertEqual(self.req._Request__data, json.loads(result))
 
     def test_wrong_input(self):
+        '''Testing wrong-case inputs for make_request'''
+
+        # testing wrong val input
         with self.assertRaises(errors.SyntaxError):
             self.req.make_request(
                query=('{"_and":['
@@ -65,6 +73,9 @@ class TestMakeRequestAuthor(unittest.TestCase):
             )
 
     def test_corner_input(self):
+        '''Testing corner-case inputs for make_request'''
+
+        # testing request generating no data
         with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
             self.req.make_request(
                 query=('{"_and":['
