@@ -3,6 +3,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import patentsview as api
 
+
 def print_patents(name, surname, output):
     """
     Print the patents' count or a list patents' names.
@@ -28,8 +29,12 @@ def print_patents(name, surname, output):
     match output:
         # print number of patents
         case 'n':
-            print('\nThe number of patents of ' + name + ' ' + surname +
-                  ' is: ' + str(contents['count']))
+            print('\nThe number of patents of '
+                  + name
+                  + ' '
+                  + surname
+                  + ' is: ' + str(contents['count'])
+                  )
             return 1
         # print the title of each patent
         case 'p':
