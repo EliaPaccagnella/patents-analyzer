@@ -68,3 +68,7 @@ def world_map():
     amount of patents. 
     
     """
+    #creating a list of countries based on alpha_2 code for compatibility
+        country_codes = []
+    for country in list(pycountry.countries):
+        country_codes += [country.alpha_2]
