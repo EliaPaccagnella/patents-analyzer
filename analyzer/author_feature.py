@@ -33,11 +33,8 @@ def print_patents(name, surname, output):
         match output:
             # print number of patents
             case 'n':
-                print('\nThe number of patents of '
-                      + name
-                      + ' '
-                      + surname
-                      + ' is: ' + str(contents['count'])
+                print('\nThe number of patents of ' +
+                      name + ' ' + surname + ' is: ' + str(contents['count'])
                       )
                 return 1
             # print the title of each patent
@@ -53,4 +50,5 @@ def print_patents(name, surname, output):
                 for patent in patents:
                     print(patent)
                 return 1
-    else: return 0
+    else:
+        return 0
