@@ -83,12 +83,9 @@ class Test_patents_country_years(unittest.TestCase):
     def test_empty_string (self):
 
         '''
-        This tests empty inputs. 
-        CASE 1: the country is empty
-        CASE 2: the year is empty
+        This tests empty inputs: the country is an empty string
         '''
 
-        # CASE 1
         test_country = ''
         test_start = 1977
         test_end = 1978
