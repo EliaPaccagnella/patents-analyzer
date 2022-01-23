@@ -58,3 +58,13 @@ def print_patents(st, val):
     print('No patent found, ' +
           'please check the country\'s name or try with another one.')
     return 0
+
+
+def world_map():
+
+     """
+    Return a world map graph showing countries
+    in different gradients of red, based on their
+    amount of patents. 
+    
+    """
