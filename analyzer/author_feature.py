@@ -4,7 +4,23 @@ import json
 import sys
 
 
+
 def print_patents(name, surname, val, contents):
+    """
+    Print the patents' count or a list patents' names.
+
+    Parameters
+    ----------
+    name    : the name of the author, used to introduce the result, and to
+              find the patents using the function "obtain_patents"
+    surname : the surname of the author, used like the previous paramenter
+    val     : the parameter passed as argument, used to print the right
+              result (eg. patents' count or the list of names)
+        If "n" will print the count of author's patents, if "p" will print
+        the list author's patents' name, else will show an error.
+    contents: list of patents
+    """
+
     match val:
         # print number of patents
         case 'n':
@@ -27,6 +43,17 @@ def print_patents(name, surname, val, contents):
 
 
 def obtain_patents(name, surname):
+"""
+Return the list and the count of patents'
+getted using the API of "patentsview.org".
+The name and surname of the author will be sent to "api.patentsview.org",
+the result will be readed and loaded in JSON format.
+
+Parameters
+----------
+name     : the name of the author
+surname  : the surname of the author
+"""
 
     req = api.Request()
     req.make_request(
