@@ -83,7 +83,7 @@ def world_map():
     # using previous print_patents function to retrieve number of patents
     for state in country_codes:
         data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
-        data['number of patents'] += [print_patents(state, "n", "10000")]
+        data['number of patents'] += [print_patents(state, "n")]
 
     df = pd.DataFrame(data)
     df.to_csv("patents/data.csv")
