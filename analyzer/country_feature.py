@@ -129,7 +129,6 @@ def world_map(continent):
                 data['number of patents'] += [print_patents(state, "n")]
 
         df = pd.DataFrame(data)
-        df.to_csv("patents/data.csv")
 
         # df = pd.read_csv('patents/data.csv')
 
