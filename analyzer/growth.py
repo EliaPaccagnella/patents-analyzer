@@ -12,7 +12,7 @@ in a specific period (years)
 """
 
 
-def patents_country_years(country, start, end):
+def patents_country_years(country, start, end, verbose=True):
 
     """
     Given a country and a period of time, return a dictionary where:
@@ -37,7 +37,7 @@ def patents_country_years(country, start, end):
 
     if start > 1975 and end < 2022:
         # implementing loading bar
-        format = 'Loading data:\033[96m{bar:50}\033[37m {percentage:3.0f}%\n'
+        format = 'Loading data:\033[96m{bar:50}\033[37m {percentage:3.0f}%'
         for year in tqdm(range(start, end+1), bar_format=format):
             req = Request()
             query = '{"_and":[{"assignee_country": "'\
@@ -54,7 +54,7 @@ def patents_country_years(country, start, end):
             else:
                 response = ('\033[93mSadly, there is no data for country {c}.'
                             '\033[37m').format(c=country)
-                print(response)
+                if verbose: print(response)
                 return response
         return data
 
@@ -62,7 +62,7 @@ def patents_country_years(country, start, end):
     else:
         response = ('\033[93mPlease make sure: '
                     'the time range is within 1976-2021 (included).\033[37m')
-        print(response)
+        if verbose: print(response)
         return response
 
 
@@ -96,7 +96,7 @@ def get_graph(dictionary, country, start, end):
     plt.show()
 
 
-def growth(country, start, end):
+def growth(country, start, end, verbose=True):
 
     """
     Include the above 2 functions to have a better output
@@ -112,7 +112,7 @@ def growth(country, start, end):
           max value = 2021
     """
 
-    data = patents_country_years(country, start, end)
+    data = patents_country_years(country, start, end, verbose)
     if type(data) is dict:
         get_graph(data, country, start, end)
 

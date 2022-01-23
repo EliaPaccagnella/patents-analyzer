@@ -63,7 +63,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'
         response = response.format(c=test_country)
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response
             )
 
@@ -74,7 +74,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'
         response = response.format(c=test_country)
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response)
 
         # CASE 3
@@ -84,7 +84,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'
         response = response.format(c=test_country)
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response)
 
         # CASE 4
@@ -94,7 +94,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = ('\033[93mPlease make sure: '
                     'the time range is within 1976-2021 (included).\033[37m')
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response)
 
     def test_empty_string(self):
@@ -109,7 +109,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = '\033[93mSadly, there is no data for country {c}.\033[37m'
         response = response.format(c=test_country)
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response
             )
 
@@ -129,7 +129,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = ('\033[93mPlease make sure: '
                     'the time range is within 1976-2021 (included).\033[37m')
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response
             )
 
@@ -140,7 +140,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = ('\033[93mPlease make sure: '
                     'the time range is within 1976-2021 (included).\033[37m')
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response
             )
 
@@ -151,7 +151,7 @@ class Test_patents_country_years(unittest.TestCase):
         response = ('\033[93mPlease make sure: '
                     'the time range is within 1976-2021 (included).\033[37m')
         self.assertEqual(
-            patents_country_years(test_country, test_start, test_end),
+            patents_country_years(test_country, test_start, test_end, False),
             response
             )
 
