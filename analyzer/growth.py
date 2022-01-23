@@ -31,10 +31,10 @@ def patents_country_years(country, start, end):
     """
 
     data = {}
-    
+
     if start > end:
-       start, end = end, start
-    
+        start, end = end, start
+
     if start > 1975 and end < 2022:
         # implementing loading bar
         format = 'Loading data:\033[96m{bar:50}\033[37m {percentage:3.0f}%\n'
