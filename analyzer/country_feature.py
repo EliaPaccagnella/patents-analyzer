@@ -2,6 +2,11 @@ from types import NoneType
 import pycountry
 import plotly.graph_objects as go
 import pandas as pd
+import sys
+import os
+# importing modules from analyzer
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import analyzer.patentsview as api
 from patentsview import api
 
 
