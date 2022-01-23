@@ -7,7 +7,6 @@ import os
 # importing modules from analyzer
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import analyzer.patentsview as api
-from patentsview import api
 
 
 def print_patents(st, val):
@@ -18,16 +17,15 @@ def print_patents(st, val):
 
     PARAMETERS:
     st     : the name of the assignee's country
-    val       : the parameter passed as argument, used to print the right
-                result (eg. patents' count or the list of patents' names)
-                If val="n", will print the count of the patents,
-                if val="p", will print the list of patents' names,
-                else will show an error.
+    val    : the parameter passed as argument, used to print the right
+             result (eg. patents' count or the list of patents' names)
+             If val="n", will print the count of the patents,
+             if val="p", will print the list of patents' names,
+             else will show an error.
     """
     req = api.Request()
     req.make_request(query='{"assignee_country":["' + st + '"]}')
     contents = req.get_data()
-    # contents = get_patents(st)
     if type(contents) != NoneType:
         match val:
             case 'n':
@@ -44,15 +42,15 @@ def print_patents(st, val):
                         return contents['total_patent_count']
             case 'p':
                 if contents['patents'] is not None:
-                    lista = []
+                    lst = []
                     for patent in contents['patents']:
                         patent_name = patent['patent_title']
-                        lista.append(patent_name)
-                    lista = sorted(list(dict.fromkeys(lista)))
+                        lst.append(patent_name)
+                    lst = sorted(list(dict.fromkeys(lst)))
                     print('\nThe patents of ' +
                           pycountry.countries.get(alpha_2=str(st)).name +
                           ' are:\n')
-                    for p in lista:
+                    for p in lst:
                         print(p)
                     return 1
             case _:
