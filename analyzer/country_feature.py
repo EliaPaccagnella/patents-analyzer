@@ -7,7 +7,6 @@ import os
 # importing modules from analyzer
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import analyzer.patentsview as api
-from patentsview import api
 
 
 def print_patents(st, val):
