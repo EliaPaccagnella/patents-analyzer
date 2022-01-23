@@ -6,6 +6,18 @@ from patentsview import api
 
 def print_patents(state, val):
 
+    """
+    Return the list or the count of patents given an assignee's country
+    fetched using the API of "patentsview.org".
+
+    PARAMETERS:
+    state     : the name of the assignee's country
+    val       : the parameter passed as argument, used to print the right
+                result (eg. patents' count or the list of patents' names)
+                If val="n", will print the count of the patents,
+                if val="p", will print the list of patents' names,
+                else will show an error.
+    """
     req = api.Request()
     req.make_request(query='{"assignee_country":["'+ state +'"]}')
     contents = req.get_data()
