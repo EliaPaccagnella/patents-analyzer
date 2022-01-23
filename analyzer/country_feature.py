@@ -64,7 +64,7 @@ def print_patents(st, val):
     return 0
 
 
-def world_map():
+def world_map(continent):
 
     """
     Return a world map graph showing countries
@@ -120,43 +120,42 @@ def world_map():
 
         data = {"code": [], "number of patents": []}
 
-    # using previous print_patents function to retrieve number of patents
-    for state in country_codes:
+        # using previous print_patents function to retrieve number of patents
+        for state in country_codes:
             if state in continents[continent] or continent == 'world':
                 # adding country code to the data dictionary
-                data['code'] +=
-                [pycountry.countries.get(alpha_2=state).alpha_3]
+                data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
                 # using print_patents function to retrieve number of patents
                 data['number of patents'] += [print_patents(state, "n")]
 
-    df = pd.DataFrame(data)
-    df.to_csv("patents/data.csv")
+        df = pd.DataFrame(data)
+        df.to_csv("patents/data.csv")
 
-    # df = pd.read_csv('patents/data.csv')
+        # df = pd.read_csv('patents/data.csv')
 
-    # using plotly documentation  https://plotly.com/python/choropleth-maps/
-    fig = go.Figure(data=go.Choropleth(
-        locations=df['code'],  # Spatial coordinates
-        z=df['number of patents'].astype(float),  # Data to be color-coded
-        locationmode='ISO-3',  # set of locations match entries in `locations`
-        colorscale='Reds',
-        colorbar_title="Number of patents",
-    ))
+        # using plotly documentation  https://plotly.com/python/choropleth-maps/
+        fig = go.Figure(data=go.Choropleth(
+            locations=df['code'],  # Spatial coordinates
+            z=df['number of patents'].astype(float),  # Data to be color-coded
+            locationmode='ISO-3',  # set of locations match entries in `locations`
+            colorscale='Reds',
+            colorbar_title="Number of patents",
+        ))
 
-    fig.update_layout(
-        title_text='Number of patents by state',
-        geo_scope=continent,  # sets the map to show th continent specified
-    )
+        fig.update_layout(
+            title_text='Number of patents by state',
+            geo_scope=continent,  # sets the map to show th continent specified
+        )
 
-    fig.show()
-    return 1
+        fig.show()
+        return 1
     else:
         print(('{continent} is not a valid continent. Choose among:\n'
-               '\t- europe\n'
-               '\t- north america\n'
-               '\t- south america\n'
-               '\t- asia\n'
-               '\t- africa\n'
-               '\t- world\n').format(continent=continent))
+            '\t- europe\n'
+            '\t- north america\n'
+            '\t- south america\n'
+            '\t- asia\n'
+            '\t- africa\n'
+            '\t- world\n').format(continent=continent))
         return 0
 
