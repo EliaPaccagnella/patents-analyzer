@@ -1,13 +1,13 @@
 import unittest
-import os
-import sys
 import json
+import sys
+import os
 from unittest.mock import patch
 import io
 # importing modules from analyzer
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from patent import errors
-from patent import api
+from analyzer import patentsview as api
+from analyzer.errors import errors
 
 
 class TestMakeRequestCountry(unittest.TestCase):
@@ -50,6 +50,12 @@ class TestMakeRequestCountry(unittest.TestCase):
                   '{"patent_id":"10004476"},{"patent_id":"10004702"}],'
                   '"count":25,"total_patent_count":59177}')
         self.assertEqual(self.req._Request__data, json.loads(result))
+
+    def test_wrong_input(self):
+        '''Testing wrong-case inputs for make_request'''
+
+        # testing wrong val input
+        self.assertEqual(print_patents('IT','l'),0)
 
     def test_corner_input(self):
         '''Testing corner-case inputs for make_request'''
