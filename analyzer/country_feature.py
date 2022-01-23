@@ -141,3 +141,13 @@ def world_map():
     )
 
     fig.show()
+        return 1
+    else:
+        print(('{continent} is not a valid continent. Choose among:\n'
+               '\t- europe\n'
+               '\t- north america\n'
+               '\t- south america\n'
+               '\t- asia\n'
+               '\t- africa\n'
+               '\t- world\n').format(continent=continent))
+        return 0
