@@ -155,5 +155,6 @@ class Test_patents_country_years(unittest.TestCase):
             response
             )
 
+
 if __name__ == '__main__':
     unittest.main(verbosity=0)
