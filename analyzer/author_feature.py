@@ -1,6 +1,4 @@
-from urllib.request import urlopen
 import patentsview as api
-import json
 import sys
 
 
