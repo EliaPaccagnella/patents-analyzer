@@ -50,7 +50,7 @@ def print_patents(name, surname, output):
                 for patent in patents:
                     print(patent)
                 return 1
-            case_:
+            case _:
                 print('The parameter is not correct, please use "n" ' +
                       'to print the amount of patents or "p" for the ' +
                       'list of patents')
