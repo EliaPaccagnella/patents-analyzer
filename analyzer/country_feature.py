@@ -128,9 +128,11 @@ def world_map(continent, verbose=True):
         for state in country_codes:
             if state in continents[continent] or continent == 'world':
                 # adding country code to the data dictionary
-                data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
+                data['code'].append(
+                    pycountry.countries.get(alpha_2=state).alpha_3)
                 # using print_patents function to retrieve number of patents
-                data['number of patents'] += [print_patents(state, "n", verbose)]
+                data['number of patents'].append(
+                    print_patents(state, "n", verbose))
 
         df = pd.DataFrame(data)
 
@@ -139,7 +141,6 @@ def world_map(continent, verbose=True):
         # using plotly documentation
         # https://plotly.com/python/choropleth-maps/
 
-    
         fig = go.Figure(data=go.Choropleth(
             locations=df['code'],   # Spatial coordinates
             # Data to be color-coded
@@ -159,10 +160,10 @@ def world_map(continent, verbose=True):
         return 1
     else:
         print(('{continent} is not a valid continent. Choose among:\n'
-            '\t- europe\n'
-            '\t- north america\n'
-            '\t- south america\n'
-            '\t- asia\n'
-            '\t- africa\n'
-            '\t- world\n').format(continent=continent))
+               '\t- europe\n'
+               '\t- north america\n'
+               '\t- south america\n'
+               '\t- asia\n'
+               '\t- africa\n'
+               '\t- world\n').format(continent=continent))
         return 0
