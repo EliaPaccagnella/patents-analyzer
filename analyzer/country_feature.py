@@ -63,7 +63,7 @@ def print_patents(st, val):
     return 0
 
 
-def world_map(continent):
+def world_map(continent, verbose=True):
 
     """
     Return a world map graph showing countries
@@ -125,17 +125,22 @@ def world_map(continent):
                 # adding country code to the data dictionary
                 data['code'] += [pycountry.countries.get(alpha_2=state).alpha_3]
                 # using print_patents function to retrieve number of patents
-                data['number of patents'] += [print_patents(state, "n")]
+                data['number of patents'] += [print_patents(state, "n", verbose)]
 
         df = pd.DataFrame(data)
 
         # df = pd.read_csv('patents/data.csv')
 
-        # using plotly documentation  https://plotly.com/python/choropleth-maps/
+        # using plotly documentation
+        # https://plotly.com/python/choropleth-maps/
+
+    
         fig = go.Figure(data=go.Choropleth(
-            locations=df['code'],  # Spatial coordinates
-            z=df['number of patents'].astype(float),  # Data to be color-coded
-            locationmode='ISO-3',  # set of locations match entries in `locations`
+            locations=df['code'],   # Spatial coordinates
+            # Data to be color-coded
+            z=df['number of patents'].astype(float),
+            # set of locations match entries in `locations`
+            locationmode='ISO-3',
             colorscale='Reds',
             colorbar_title="Number of patents",
         ))
