@@ -9,7 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import analyzer.patentsview as api
 
 
-def print_patents(st, val, verbose = True):
+def print_patents(st, val, verbose=True):
 
     """
     Return the list or the count of patents given an assignee's country
@@ -25,7 +25,7 @@ def print_patents(st, val, verbose = True):
     """
     req = api.Request()
     req.make_request(query='{"assignee_country":["' + st + '"]}',
-                     verbose = verbose)
+                     verbose=verbose)
     contents = req.get_data()
     if type(contents) != NoneType:
         match val:
@@ -139,7 +139,7 @@ def world_map(continent, verbose=True):
         # using plotly documentation
         # https://plotly.com/python/choropleth-maps/
 
-    
+
         fig = go.Figure(data=go.Choropleth(
             locations=df['code'],   # Spatial coordinates
             # Data to be color-coded
