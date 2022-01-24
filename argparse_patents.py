@@ -7,7 +7,7 @@ import pycountry
 def make_argparse():
 
     FUNCTION_MAP = {
-        'graph_growth': growth,
+        'growth': growth,
         'patents_from_author': author_feature.print_patents,
         'patents_from_country': country_feature.print_patents,
         'world_map': country_feature.world_map
