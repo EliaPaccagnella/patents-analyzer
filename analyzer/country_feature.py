@@ -24,24 +24,24 @@ def print_patents(st, val, verbose = True):
              else will show an error.
     """
     req = api.Request()
-    req.make_request(query='{"assignee_country":["' + st + '"]}')
+    req.make_request(query='{"assignee_country":["' + st + '"]}',
+                     verbose = verbose)
     contents = req.get_data()
     if type(contents) != NoneType:
         match val:
             case 'n':
                 if contents['total_patent_count'] > 0:
+                    name = pycountry.countries.get(alpha_2=str(st)).name
                     if contents['total_patent_count'] >= 100000:
                         if verbose:
                             print('\nThe amount of patents of ' +
-                                  pycountry.countries.get(alpha_2=str(st)).name
-                                  + 'is more than 100.000')
+                                  name + 'is more than 100.000')
                         return 100000
                     else:
                         if verbose:
                             print('\nThe amount of patents of ' +
-                                  pycountry.countries.get(alpha_2=str(st)).name
-                                  + ' is: '
-                                  + str(contents['total_patent_count']))
+                                  name + ' is: ' +
+                                  str(contents['total_patent_count']))
                         return contents['total_patent_count']
             case 'p':
                 if contents['patents'] is not None:
