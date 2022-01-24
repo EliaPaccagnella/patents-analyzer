@@ -9,7 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import analyzer.patentsview as api
 
 
-def print_patents(st, val):
+def print_patents(st, val, verbose = True):
 
     """
     Return the list or the count of patents given an assignee's country
@@ -31,14 +31,17 @@ def print_patents(st, val):
             case 'n':
                 if contents['total_patent_count'] > 0:
                     if contents['total_patent_count'] >= 100000:
-                        print('\nThe amount of patents of ' +
-                              pycountry.countries.get(alpha_2=str(st)).name +
-                              'is more than 100.000')
+                        if verbose:
+                            print('\nThe amount of patents of ' +
+                                  pycountry.countries.get(alpha_2=str(st)).name
+                                  + 'is more than 100.000')
                         return 100000
                     else:
-                        print('\nThe amount of patents of ' +
-                              pycountry.countries.get(alpha_2=str(st)).name +
-                              ' is: ' + str(contents['total_patent_count']))
+                        if verbose:
+                            print('\nThe amount of patents of ' +
+                                  pycountry.countries.get(alpha_2=str(st)).name
+                                  + ' is: '
+                                  + str(contents['total_patent_count']))
                         return contents['total_patent_count']
             case 'p':
                 if contents['patents'] is not None:
@@ -54,12 +57,14 @@ def print_patents(st, val):
                         print(p)
                     return 1
             case _:
-                print('The parameter is not correct, please use "n" ' +
-                      'to print the amount of patents or "p" for the ' +
-                      'list of patents')
+                if verbose:
+                    print('The parameter is not correct, please use "n" ' +
+                          'to print the amount of patents or "p" for the ' +
+                          'list of patents')
                 return 0
-    print('No patent found, ' +
-          'please check the country\'s name or try with another one.')
+    if verbose:
+        print('No patent found, ' +
+              'please check the country\'s name or try with another one.')
     return 0
 
 
@@ -156,4 +161,3 @@ def world_map(continent):
             '\t- africa\n'
             '\t- world\n').format(continent=continent))
         return 0
-
