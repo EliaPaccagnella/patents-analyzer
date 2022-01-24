@@ -7,17 +7,16 @@ import pycountry
 
 def make_argparse():
 
-    FUNCTION_MAP = {
-        'graph_growth': growth,
-        'patents_from_author': author_feature.print_patents,
-        'patents_from_country': country_feature.print_patents,
-        'world_map': country_feature.world_map
-    }
+    FUNCTIONS = [
+        'growth',
+        'patents_from_author',
+        'patents_from_country',
+        'world_map'
+    ]
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('command', choices=FUNCTION_MAP.keys())
-
+    parser.add_argument('command', choices=FUNCTIONS)
     # general arguments
     parser.add_argument('-v', '--verbose', action='store_true')
 
@@ -26,7 +25,7 @@ def make_argparse():
     for country in list(pycountry.countries):
         country_codes += [country.alpha_2]
     parser.add_argument('-c', '--country', choices=country_codes)
-    parser.add_argument('-s', '--start', type=int, choices=range(1976, 2022))
+    parser.add_argument('-b', '--begin', type=int, choices=range(1976, 2022))
     parser.add_argument('-e', '--end', type=int, choices=range(1976, 2022))
 
     # arguments needed for world_map
@@ -55,4 +54,3 @@ def make_argparse():
     args = parser.parse_args()
 
     return args
-    
