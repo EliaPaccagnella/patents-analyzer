@@ -14,8 +14,8 @@ class TestMakeRequestCountry(unittest.TestCase):
         - string of a state name abbreviation for the parameter st,
         - n or p for the parameter val.'''
 
-        self.assertEqual(print_patents('IT', 'n'), 59700)
-        self.assertEqual(print_patents('IT', 'p'), 1)
+        self.assertEqual(print_patents('IT', 'n', False), 59700)
+        self.assertEqual(print_patents('IT', 'p', False), 1)
 
     def test_wrong_input(self):
         '''Testing wrong-case inputs for print_patents,
@@ -24,10 +24,10 @@ class TestMakeRequestCountry(unittest.TestCase):
         - string different from n or p for the parameter val.'''
 
         # testing wrong st input
-        self.assertEqual(print_patents('Mars', 'n'), 0)
+        self.assertEqual(print_patents('Mars', 'n', False), 0)
 
         # testing wrong val input
-        self.assertEqual(print_patents('IT', 'l'), 0)
+        self.assertEqual(print_patents('IT', 'l', False), 0)
 
     def test_corner_input(self):
         '''Testing corner-case inputs for print_patents,
@@ -35,8 +35,8 @@ class TestMakeRequestCountry(unittest.TestCase):
         - empty string for the parameter st,
         - empty string for the parameter val.'''
 
-        self.assertEqual(print_patents('', 'n'), 0)
-        self.assertEqual(print_patents('IT', ''), 0)
+        self.assertEqual(print_patents('', 'n', False), 0)
+        self.assertEqual(print_patents('IT', '', False), 0)
 
 
 if __name__ == '__main__':
