@@ -45,7 +45,7 @@ def patents_country_years(country, start, end, verbose=True):
                     + '"}, {"patent_year": '\
                     + str(year)\
                     + '}]}'
-            req.make_request('patents', query)
+            req.make_request('patents', query, verbose=verbose)
             contents = req.get_data()['total_patent_count']
             if contents != 0:
                 data[str(year)] = contents
