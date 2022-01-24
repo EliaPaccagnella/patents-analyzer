@@ -15,7 +15,7 @@ class TestWorldMap(unittest.TestCase):
             letters or capitalized names have been into
             a comment string to reduce running time,
             altough they do work.
-            
+
         """
         # valid continents
         valid_continents = [
@@ -40,11 +40,11 @@ class TestWorldMap(unittest.TestCase):
 
     def test_invalid_input(self):
         # continet inputed is not a valid continent
-        self.assertEqual(world_map('Mars'), False), 0)
+        self.assertEqual(world_map('Mars', False), 0)
 
     def test_corner_input(self):
         # oceania is not a valid continent for plotly
-        self.assertEqual(world_map('oceania'), False), 0)
+        self.assertEqual(world_map('oceania', False), 0)
 
 
 if __name__ == '__main__':
