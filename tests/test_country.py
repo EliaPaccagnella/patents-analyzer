@@ -15,6 +15,7 @@ class TestMakeRequestCountry(unittest.TestCase):
         - n or p for the parameter val.'''
 
         self.assertEqual(print_patents('IT', 'n'), 59700)
+        self.assertEqual(print_patents('US', 'n'), 100000)
         self.assertEqual(print_patents('IT', 'p'), 1)
 
     def test_wrong_input(self):
