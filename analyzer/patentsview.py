@@ -84,8 +84,6 @@ class Request():
                         raise errors.SyntaxError(
                             json_data['payload']['error']
                         )
-                    else:
-                        KeyError
                 else:
                     self.__data = json_data
             else:
