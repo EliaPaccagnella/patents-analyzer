@@ -34,7 +34,7 @@ def make_argparse():
         choices=continents
         )
 
-    # arguments needed for patents_from_country
+    # arguments needed for patents_from_country and for patents_from_author
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-n', '--number', action='store_true')
     group.add_argument('-p', '--patents', action='store_true')
