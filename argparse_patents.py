@@ -1,7 +1,4 @@
 import argparse
-from analyzer import growth
-from analyzer import author_feature
-from analyzer import country_feature
 import pycountry
 
 
@@ -29,17 +26,12 @@ def make_argparse():
     parser.add_argument('-e', '--end', type=int, choices=range(1976, 2022))
 
     # arguments needed for world_map
+    continents = ['world', 'north america', 'africa',
+                  'south america', 'asia', 'europe']
     parser.add_argument(
         '-a',
         '--continent',
-        choices=[
-            'world',
-            'north america'
-            'africa',
-            'south america',
-            'asia',
-            'europe'
-            ]
+        choices=continents
         )
 
     # arguments needed for patents_from_country
