@@ -261,3 +261,32 @@ This will generate an `htmlcov\index.html` file containing the coverage report o
 ![image](https://user-images.githubusercontent.com/93975010/150993581-c5a3f9a1-c8a1-40b9-9c21-99b06d7bc6e6.png)
 
 The modules on the left can be navigated to visualize which sections of the code were not tested or were excluded during the unit testing.
+
+# 5. Technology used
+
+The project has been developed making use of ```python``` as main programming language. Data instead was gathered trought the PatentsView API.
+
+## 5.1. API description
+
+The project makes use exclusively of data gathered through the public API "Patents View" by the US Patent and Trademark Office (look at the [API's documentation here](https://patentsview.org/apis/api-query-language)).
+> The PatentsView API is intended to inspire the exploration and enhanced understanding of US intellectual property (IP) and innovation systems. The database driving the API is regularly updated and integrates the best available tools for inventor disambiguation and data quality control.
+>
+><p align="right"><i>source: <a href="https://patentsview.org/apis/purpose">patentsview.org/apis/purpose</a></i></p>
+
+Thus, there are 3 main reasons for which we chose this API for our projects:
+
+1. we wanted to challenge ourself in using an API instead of importing the data directly form a .csv or .xls dataset;
+2. this API does not require authentication to request the data;
+3. the API was designed to "inspire the exploration and enhanced understanding" of world's IP system;
+
+### 5.1.1. Software limitations
+
+The choice of this API imposes some limitations to our project:
+
+- **Quantity of data**: every function can not return more than 100.000 patents per time.
+
+- **Time constraints**: each function can use only data older than June 29, 2021.
+
+- **Request constraints**: since the API used in this project does not require a key to access the data, there is a constraint of 45 requests per minute.
+
+- **Test failures**: the API is updated once every quarter and thus the test created before the update will no more work once the updates are online (see [API FAQs](https://patentsview.org/apis/api-faqs#data-updates) for reference).
