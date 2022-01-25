@@ -1,3 +1,36 @@
+<img src="https://user-images.githubusercontent.com/93975010/150871957-ffcc6445-0a0f-4dad-b09d-67688cc6de2c.svg" width=100% style="max-width:800px;display:block;margin-left:auto;margin-right:auto">
+
+<br>
+
+<p align="center">
+  <a href="https://www.python.org/downloads/release/python-3100/" alt="Python 3.10">
+    <img src="https://img.shields.io/badge/Python-3.10-blue?style=flat&logo=python&logoColor=ffe15e&labelColor=2b2728&color=4684b6">
+  </a>
+  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" alt="License">
+    <img src="https://img.shields.io/badge/Licence-GNU%20GPL%20v3-green?style=flat&logo=Bitwarden&logoColor=white&labelColor=2b2728&color=green">
+  </a>
+  <a href="https://patentsview.org/apis/purpose" alt="API">
+    <img src="https://img.shields.io/badge/API-Patents%20View-ghostwhite?style=flat&labelColor=2b2728">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://docs.python-requests.org/en/latest/" alt="requests">
+    <img src="https://img.shields.io/badge/2.26.0-requests-orange?style=flat&labelColor=2b2728">
+  </a>
+  <a href="https://docs.python.org/3/library/json.html" alt="json">
+    <img src="https://img.shields.io/badge/3.10.1-json-lawngreen?style=flat&labelColor=2b2728">
+  </a>
+  <a href="https://matplotlib.org/stable/index.html" alt="matplotlib">
+    <img src="https://img.shields.io/badge/3.5.1-matplotlib-blue?style=flat&labelColor=2b2728">
+  </a>
+  <a href="https://pandas.pydata.org/docs/" alt="pandas">
+    <img src="https://img.shields.io/badge/1.3.5-pandas-orangered?style=flat&labelColor=2b2728">
+  </a>
+  <a href="https://numpy.org/" alt="numpy">
+    <img src="https://img.shields.io/badge/1.22.0-numpy-teal?style=flat&labelColor=2b2728">
+  </a>
+</p>
 
 <hr>
 <h1>Warning ⚠️</h1>
