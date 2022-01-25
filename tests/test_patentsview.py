@@ -10,7 +10,7 @@ from analyzer import patentsview as api
 from analyzer.errors import errors
 
 
-class test_make_request(unittest.TestCase):
+class TestMakeRequest(unittest.TestCase):
 
     def setUp(self):
         '''Before every test this method creates a new Request object'''
@@ -286,7 +286,7 @@ class test_make_request(unittest.TestCase):
         # source: https://bit.ly/3mQUwsO
 
 
-class test_get_data(unittest.TestCase):
+class TestGetData(unittest.TestCase):
 
     def setUp(self):
         '''Before every test, this method creates a new Request object'''
