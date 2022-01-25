@@ -225,3 +225,39 @@ Options available:
 The World Map feature will create different choropleth maps based on the requested continent, allowing for an easy visualization of the 3D patents filing distribution. Output is as follows:
 
 ![image](https://user-images.githubusercontent.com/93975010/150991731-f85a03a4-2667-4782-b7a0-283e2d524c37.png)
+
+# 4. Testing
+
+All the tests can be found within the tests folder in the GitHub repository. Here you can find 19 different tests organized into five python files:
+- `test_author.py` : contains 3 tests on the author_feature.py module
+- `test_country.py` : contains 3 tests on the print_patents function of the contry_feature.py module
+- `test_growth.py` : contains 4 tests on the growth.py module
+- `test_patentsview.py` : contains 6 tests on the patentsview.py module
+- `test_world_map.py` : contains 3 tests on the world_map function within the country_feature.py module
+
+To run all the tests together run the following code:
+
+    python -m unittest discover tests -b -v
+
+Run single module tests with:
+
+    python -m unittest tests\test_patentsview.py -b -v
+
+or
+
+    python test_patentsview.py
+
+Warning: testing the world_map function will require on average 250 seconds and will generate 5 graphs that will be opened in a new web browser tab by plotly.
+
+## 4.1. Coverage report
+
+A report of the coverage of all the tests can be generated using the python coverage package:
+
+    coverage3 run -m unittest discover tests -b -v
+    coverage html analyzer\author_feature.py analyzer\country_feature.py analyzer\growth.py analyzer\patentsview.py
+
+This will generate an `htmlcov\index.html` file containing the coverage report of the tests as follows:
+
+![image](https://user-images.githubusercontent.com/93975010/150993581-c5a3f9a1-c8a1-40b9-9c21-99b06d7bc6e6.png)
+
+The modules on the left can be navigated to visualize which sections of the code were not tested or were excluded during the unit testing.
