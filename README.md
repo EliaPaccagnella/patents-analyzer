@@ -1,4 +1,13 @@
 
+<hr>
+<h1>Warning ⚠️</h1>
+
+Patents analyzer born from the work of five students for an university project and its development had exclusively educational purposes.
+
+The API used to gather data during the project (see [5.1. API description](#51-api-description)) has been discontinued since the 29th of June of 2021. For more information see the [API purpose page](https://patentsview.org/apis/purpose#main-content). For this reason, our code **can not be used to request statistical analysis on patents registered after June 29, 2021**. A newer version of the API (called [version 0.1](https://patentsview.org/api-query-language-v0.1)) is currently in development. Thus, patents analyzer could be updated once the new version of the API is stable.
+
+In [section 5.1.](#51-api-description), we will present also other **limitations of the API** used in this project.
+
 <h1>Index</h1>
 
 - [1. What is patents analyzer?](#1-what-is-patents-analyzer)
