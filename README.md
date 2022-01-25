@@ -11,3 +11,22 @@ To use Patents Analyzer make sure your system satifies all the prerequisites and
 git clone https://github.com/EliaPaccagnella/patents-analyzer.git
 cd patents-analyzer
 ```
+
+## 2.1. Prerequisites:
+
+In order to use `patents-analyzer` you need to have installed on your machine:
+
+- [git](https://git-scm.com/downloads)
+- [python v3.10](https://www.python.org/downloads/release/python-3100/)
+
+Moreover, you will need the following python packages:
+
+    pip install pycountry
+    pip install plotly
+    pip install pandas
+    pip install matplotlib
+    pip install tqdm
+    pip install json
+    pip install requests
+    pip install unittest
+    pip install argparse
