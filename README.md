@@ -30,3 +30,36 @@ Moreover, you will need the following python packages:
     pip install requests
     pip install unittest
     pip install argparse
+
+# 3. Usage
+
+This software was developed to be used directly from the terminal by developers or by importing it as a python library.
+
+To run the program you need to launch the ```main.py``` file with the following command:
+
+    python main.py COMMAND [options]
+
+    COMMAND:
+        growth
+          |_ options:
+                -c, --country: alpha_2 code name of the desired country
+                -b, --begin: starting year
+                -e, --end: ending year
+        patents_from_author
+          |_ options:
+                -f, --name: first name of the desired author
+                -s, --surname: last name of the desired author
+                -n: if the user wants the relative number of the patents in output
+                -p: if the user wants the relative list of the patents’ names in output
+        patents_from_country
+          |_ options:
+                -c, --country: alpha_2 code name of the desired country
+                -n: if the user wants the relative number of the patents in output
+                -p: if the user wants the relative list of the patents’ names in output
+                -v: prints out the results (advised to True)
+        world_map
+          |_ options:
+                -a, --continent: 'world',  'north america',  'africa',  'south america', 'asia',  'europe'
+                -v, --verbose: prints out all the data downloaded (advised to False)
+
+The following sections show some usage examples for each command available.
