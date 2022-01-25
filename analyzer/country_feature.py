@@ -6,7 +6,7 @@ import sys
 import os
 from tqdm import tqdm
 # importing modules from analyzer
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(_file_))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import analyzer.patentsview as api
 
 
