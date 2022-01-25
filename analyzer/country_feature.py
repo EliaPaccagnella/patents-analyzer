@@ -4,8 +4,9 @@ import plotly.graph_objects as go
 import pandas as pd
 import sys
 import os
+from tqdm import tqdm
 # importing modules from analyzer
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(_file_))))
 import analyzer.patentsview as api
 
 
@@ -124,8 +125,9 @@ def world_map(continent, verbose=True):
 
         data = {"code": [], "number of patents": []}
 
+        format = 'Loading data:\033[96m{bar:50}\033[37m {percentage:3.0f}%'
         # using previous print_patents function to retrieve number of patents
-        for state in country_codes:
+        for state in tqdm(country_codes, bar_format=format):
             if state in continents[continent] or continent == 'world':
                 # adding country code to the data dictionary
                 data['code'].append(
