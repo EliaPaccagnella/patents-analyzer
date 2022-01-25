@@ -1,3 +1,20 @@
+
+<h1>Index</h1>
+
+- [1. What is patents analyzer?](#1-what-is-patents-analyzer)
+- [2. How to get it](#2-how-to-get-it)
+  - [2.1. Prerequisites:](#21-prerequisites)
+- [3. Usage](#3-usage)
+  - [3.1. Growth](#31-growth)
+  - [3.2. Patent from author](#32-patent-from-author)
+  - [3.3. Patents from country](#33-patents-from-country)
+  - [3.4. World map](#34-world-map)
+- [4. Testing](#4-testing)
+  - [4.1. Coverage report](#41-coverage-report)
+- [5. Technology used](#5-technology-used)
+  - [5.1. API description](#51-api-description)
+    - [5.1.1. Software limitations](#511-software-limitations)
+
 # 1. What is patents analyzer?
 
 Patents analyzer is a software for the analysis of world's patents. This software was developed by a group of five univeristy students entirely in python.
